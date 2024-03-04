@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>XenTro Forum</title>
+    <!-- daisy ui & tailwind css  -->
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@4.7.2/dist/full.min.css" rel="stylesheet" type="text/css" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- google font links  -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=Mulish:wght@200..1000&display=swap"
+        rel="stylesheet">
+    <style>
+        .font-mulish{
+            font-family: "Mulish", sans-serif;
+        }
+        .font-inter{
+             font-family: "Inter", sans-serif;
+        }
+    </style>
+</head>
+<body class="max-w-[1440px] mx-auto font-mulish">
+    <header class="px-4 lg:px-20">
+        <!-- nav bar start is here  -->
+        <nav>
+            <div class="navbar bg-base-100 my-10">
+                <div class="navbar-start">
+                    <div class="dropdown">
+                        <div tabindex="0" role="button" class="">
+                            <h2 class="font-black text-3xl">XenTro</h2>
+                        </div>
+                    </div>
+                </div>
+                <div class="navbar-end gap-2">
+                    <div class=" hidden md:block">
+                       <div class="gap-2 flex">
+                            <button
+                                class="btn btn-ghost btn-circle bg-[#12132D08] border border-[#0307121A] grid items-center tooltip hover:tooltip-open"
+                                data-tip="Home"><img src="./images/home.png" alt=""></button>
+                            <button
+                                class="btn btn-ghost btn-circle bg-[#12132D08] border border-[#0307121A] grid items-center tooltip hover:tooltip-open"
+                                data-tip="Edit"><img src="./images/pen.png" alt=""></button>
+                            <button
+                                class="btn btn-ghost btn-circle bg-[#12132D08] border border-[#0307121A] grid items-center tooltip hover:tooltip-open"
+                                data-tip="Add"><img src="./images/account.png" alt=""></button>
+                            <button
+                                class="btn btn-ghost btn-circle bg-[#12132D08] border border-[#0307121A] grid items-center tooltip hover:tooltip-open"
+                                data-tip="Trending"><img src="./images/flag.png" alt=""></button>
+                       </div>
+                    </div>
+                    <button class="btn rounded-full px-8 text-base font-bold text-white bg-[#797DFC]">Sign In</button>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <main class="px-4 lg:px-20">
+        <!-- banner section is here  -->
+        <section>
+            <div class="h-auto md:h-[27.5rem] w-full bg-[#12132D] rounded-3xl bg-[url(./images/bgbanner.png)] bg-cover md:bg-contain bg-center md:bg-bottom bg-no-repeat grid grid-cols-1 md:grid-cols-2 py-5 lg:py-20 px-5 lg:px-24 gap-10 lg:gap-24">
+                <div class="flex flex-col gap-4 justify-between">
+                    <h1 class="text-3xl md:text-5xl leading-snug lg:leading-snug text-white font-black">Welcome to the <span class="bg-gradient-to-r from-[#797DFC] to-[#797dFC00] bg-clip-text text-transparent">XenTro</span> Forum</h1>
+                    <p class="text-white text-lg font-normal">Empowering Ideas, Connecting Minds"? Share your favorite opinion with us!</p>
+                    <div>
+                        <label class="input rounded-full flex items-center justify-between gap-2">
+                            <input id="input-cate" type="text" placeholder="Search here anything" class="md:grow " />
+                            <button onclick="searchCate()" class="badge badge-info py-4 rounded-full px-5 text-base font-bold text-white bg-[#797DFC] relative right-5 md:-right-3">Search</button>
+                        </label>
+                    </div>
+                </div>
+                <div class="bg-white rounded-3xl p-9 md:m-6 text-xl text-[#12132DCC] font-medium *:flex *:justify-between flex flex-col justify-between">
+                    <div class=""> 
+                        <h5>Registered Users</h5>
+                        <h5>01</h5>
+                    </div>
+                    <div class=""> 
+                        <h5>Forum</h5>
+                        <h5>05</h5>
+                    </div>
+                    <div class=""> 
+                        <h5>Topics</h5>
+                        <h5>01</h5>
+                    </div>
+                    <div class=""> 
+                        <h5>Replies</h5>
+                        <h5>01</h5>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- Let’s Discuss section is here  -->
+        <section class="py-20">
+            <div class="text-center">
+                <h3 class="text-[#12132D] font-black text-4xl">Let’s Discuss</h3>
+                <p class="font-inter text-lg text-[#12132D99] mt-6 mb-12 lg:w-2/3 mx-auto">Empowering Connections, Inspiring Conversations. Join us - Where Ideas Meet and Knowledge
+                Grows. Your Voice Matters Here!</p>
+            </div>
+            <!-- cards container  -->
+            <!-- <button onclick="AddToList(`${post.title.replace(/'/g,'@')}`)" -->
+            <div class="grid grid-cols-1 lg:gap-5 lg:grid-cols-3">
+                <div class="col-span-2 ">
+                    <div id="loading-spinner" class="flex justify-center py-10 hidden">
+                        <span class="loading loading-bars loading-lg"></span>
+                    </div>
+                    <div id="all-post-container" class="mb-5 lg:mb-0 ">
+
+                    </div>
+                  
+                </div>
+                <div id="all-Read-Sms-Container" class="col-span-1 h-max bg-[#12132D0D] space-y-4 p-5 rounded-2xl">
+                    <div class="flex justify-between ">
+                        <h4 class="text-[#12132D] font-bold text-lg">Title</h4>
+                        <div class="flex gap-2">
+                           <div>
+                                <img src="./images/Frame.png" alt="">
+                           </div>
+                            <p class="text-[#12132D99] font-inter text-base">Mark as read (<span id="counter">0</span>)</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- join our frum section is here  -->
+        <section>
+            <div
+                class=" w-full bg-[#12132D] rounded-3xl bg-[url(./images/joinforum.png)] bg-right-bottom bg-contain lg:bg-[length:350px_270px] bg-no-repeat p-8 lg:p-[4.5rem]">
+                <div class="">
+                    <h1 class="text-3xl md:text-4xl text-white font-black">Join Our Forum
+                    </h1>
+                    <p class="text-[#FFFFFFCC] text-lg font-normal md:w-2/3 mt-4 mb-5">Join Our Forum
+                    Share your favorite opinion and win and wp forum coffee mug! Yes, you can run unit tests and view the results directly
+                    within the app.!</p>
+                    <button class="btn border-none rounded-full px-8 text-base font-bold text-white bg-[#797DFC]">Registered Now</button>  
+                </div>
+            </div>
+        </section>
+        <!-- Latest Posts section is here  -->
+        <section>
+            <div class="py-20">
+                <div class="text-center">
+                    <h3 class="text-[#12132D] font-black text-4xl">Latest Posts</h3>
+                    <p class="font-inter text-lg text-[#12132D99] mt-6 mb-12 lg:w-2/3 mx-auto">Explore the Freshest Content with Latest Posts - Your Source for Trends, Insights, and Stories That Matter. Discover Something New Today!</p>
+                </div>
+                <div id="loading-spinner-lates" class="flex justify-center py-10 hidden">
+                    <span class="loading loading-bars loading-lg"></span>
+                </div>
+                <div id="latesCard" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+                    <!-- <div class="rounded-2xl border p-5 border-[#12132D26] mb-5">
+                        <figure><img class="w-full overflow-hidden rounded-2xl" src="./images/Rectangle 4.png" alt=""></figure>
+                        <div class="flex items-center gap-3 mt-6 mb-4">
+                            <div>
+                                <img src="./images/calender.png" alt="">
+                            </div>
+                            <p class="text-[#12132D99] font-inter text-base">29 January 2024</p>
+                        </div>
+                        <h1 class="text-[#12132D] font-extrabold text-lg">What will a mars habitat force that impact in our daily life!!!</h1>
+                        <p class="text-[#12132D99] font-normal pt-2 font-inter text-base">Yes, you can run unit tests and view the results directly within the app.</p>
+                        <div class="flex gap-3 items-center mt-4">
+                            <div><img src="./images/Ellipse 1.png" alt=""></div>
+                            <div class="text-[#12132D]">
+                                <h5 class="font-bold text-base">Cameron Williamson</h5>
+                                <h5 class="text-sm font-normal">Unknown</h5>
+                            </div>
+                        </div>
+                    </div> -->
+                </div>
+            </div>
+        </section>
+    </main>
+    <footer class="py-24 bg-[#12132D0D]">
+        <div class="text-center flex flex-col items-center">
+            <h3 class="text-[#12132D] font-black text-4xl">XenTro</h3>
+            <p class=" text-base text-[#12132D99] mt-4 mb-8 lg:w-2/4 mx-auto">Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature
+            from 45 BC</p>
+            <div class="flex gap-8 *:cursor-pointer">
+                <img src="./images/1.png" alt="">
+                <img src="./images/2.png" alt="">
+                <img src="./images/3.png" alt="">
+                <img src="./images/4.png" alt="">
+            </div>
+        </div>
+        <hr class="border border-[#30325E1A] my-12 mx-4 lg:mx-20">
+        <h6 class="text-center text-base font-light">2017, All Rights Reserved.</h6>
+    </footer>
+    <script src="./js/app.js"></script>
+</body>
+</html>
